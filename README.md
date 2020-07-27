@@ -2,7 +2,7 @@
 
 FTN Informatika - Java Web Development - final exam
 
-Project info: https://enastava.ftninformatika.com/files/165999/download?download_frd=1
+Project info: https://github.com/veliborr/BankaFinalTest/blob/master/zavrsni_prenos_sredstava.pdf
 
 # Architecture:
 - Spring Boot

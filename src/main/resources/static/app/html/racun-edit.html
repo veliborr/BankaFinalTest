@@ -1,0 +1,29 @@
+<div ng-controller="RacunEditCtrl">
+	
+	
+	<div class="row">
+	
+	<div class="col-md-6">
+	<h1>Izmena poruke</h1>
+		<form>
+			<div class="form-group">
+				<label >Ime i prezime</label>
+				<input class="form-control" ng-model="racun.imeIPrezime" />
+			</div>
+			<div class="form-group">
+				<label >JMBG</label>
+				<input class="form-control" ng-model="racun.jmbg" />
+			</div>
+			<div class="form-group">
+				<label >Broj računa</label>
+				<input class="form-control" ng-model="racun.brojRacuna" />
+			</div>
+			<div class="form-group">
+				<label >Stanje računa</label>
+				<input class="form-control" ng-model="racun.stanjeNaRacunu" />
+			</div>
+			
+			<button class="btn btn-primary" ng-click="doEdit()">Sačuvaj</button>
+		</form>
+	</div>
+	</div>

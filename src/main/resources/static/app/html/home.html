@@ -1,0 +1,113 @@
+<div ng-controller="HomeCtrl">
+
+
+	<div class="row">
+
+		<div class="col-md-6">
+			<h1>Pravljenje novog računa</h1>
+			<form>
+				<div class="form-group">
+					<label for="limeiprezime">Ime i prezime</label> 
+					<input class="form-control" id="limeiprezime" ng-model="newRacun.imeIPrezime"/>
+				</div>
+				<div class="form-group">
+					<label for="ljmbg">JMBG</label> 
+					<input class="form-control" id="ljmbg" ng-model="newRacun.jmbg"/>
+				</div>
+				<div class="form-group">
+					<label for="lbrojracuna">Broj računa</label> 
+					<input class="form-control" id="lbrojracuna" ng-model="newRacun.brojRacuna"/>
+				</div>
+				<div class="form-group">
+					<label>Banka</label> <select class="form-control"  ng-model="newRacun.bankaId" ng-change="getTipoviRacuna()">
+						<option ng-repeat="b in banke" value="{{b.id}}">{{b.naziv}}</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>Tip računa</label> <select class="form-control"  ng-model="newRacun.tipRacunaId">
+						<option ng-repeat="tr in tipoviRacuna" value="{{tr.id}}">{{tr.naziv}}</option>
+					</select>
+				</div>
+				
+				<button class="btn btn-primary" ng-click="doAdd()">Dodaj</button>
+			</form>
+		</div>
+		
+		<div class="col-md-3">
+			<h1>Pretraga računa</h1>
+			<form>
+				<div class="form-group">
+					<label>Banka</label> <select class="form-control"
+						ng-model="search.bankaId">
+						<option ng-repeat="b in banke" value="{{b.id}}">{{b.naziv}}</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label>JMBG</label> <input ng-model="search.jmbg"
+						class="form-control">
+				</div>
+				
+				<button ng-click="doSearch()" class="btn btn-primary">Pretraži</button>
+				<button ng-click="doResetSearch()" class="btn btn-warning">Obriši zadatu pretragu</button>
+			</form>
+		</div>
+		
+		<div class="col-md-3">
+			<h1>Stanje u bankama</h1>
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>Banka</th>
+						<th>Sredstva</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="b in banke">
+						<td>{{ b.naziv }}</td>
+						<td>{{ b.sredstvaBanke }} <span ng-hide="r.stanjeNaRacunu === null">din</span> </td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="col-12">
+			<div style="margin-bottom: 10px" class="btn-group float-right">
+				<button ng-disabled="pageNum == 0" ng-click="changePage(-1)"
+					class="btn btn-primary">Previous</button>
+				<button ng-disabled="pageNum == totalPages - 1"
+					ng-click="changePage(1)" class="btn btn-primary">Next</button>
+			</div>
+			
+			<button class="btn btn-success" ng-click="goToPrenos()">Prenos</button>
+
+			<h1>Prikaz svih računa</h1>
+			<table class="table table-bordered table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>Ime i prezime</th>
+						<th>JMBG</th>
+						<th>Stanje</th>
+						<th>Broj računa</th>
+						<th>Tip računa</th>
+						<th>Banka</th>
+						<th>Akcije</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="r in racuni">
+						<td>{{ r.imeIPrezime }}</td>
+						<td>{{ r.jmbg }}</td>
+						<td>{{ r.stanjeNaRacunu }} <span ng-hide="r.stanjeNaRacunu === null">din</span> </td>
+						<td>{{ r.brojRacuna }}</td>
+						<td>{{ r.tipRacunaNaziv }} </td>
+						<td>{{ r.bankaNaziv }}</td>
+						<td>
+							<button class="btn btn-warning" ng-click="goToEdit(r.id)">Izmeni</button>
+							<button class="btn btn-warning" ng-click="doDelete(r.id)">Obriši</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+	</div>

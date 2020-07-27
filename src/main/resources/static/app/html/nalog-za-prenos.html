@@ -1,0 +1,26 @@
+<div ng-controller="PrenosSredstavaCtrl">
+	
+	
+	<div class="row">
+	
+	<div class="col-md-6">
+	<h1>Nalog za prenos</h1>
+		<form>
+			<div class="form-group">
+				<label >Broj računa uplatioca</label>
+				<input class="form-control" ng-model="prenos.saRacun" />
+			</div>
+			<div class="form-group">
+				<label >Broj računa primaoca</label>
+				<input class="form-control" ng-model="prenos.naRacun" />
+			</div>
+			<div class="form-group">
+				<label >Iznos</label>
+				<input class="form-control" ng-model="prenos.iznos" />
+			</div>
+	
+			
+			<button class="btn btn-primary" ng-click="prenesi()">Prenesi</button>
+		</form>
+	</div>
+	</div>
